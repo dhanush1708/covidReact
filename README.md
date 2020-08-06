@@ -2,4 +2,4 @@
 
 A webapp written in Reactjs.
 
-You can view the webapp at https://github.com/dhanush1708/covidReact
+You can view the webapp at https://dhanush1708.github.io/covidReact/
