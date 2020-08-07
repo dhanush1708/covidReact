@@ -37,13 +37,17 @@ const Chart = () => {
 							{
 								scaleLabel: {
 									display: true,
-									labelString: "Cases",
 								},
 								ticks: {
-									stepSize: 4000000,
+									beginAtZero: false,
+									callback: function (value) {
+										if (value == 0) return "0";
+										return value / 100000 + " Lakhs";
+									},
 								},
 								gridLines: {
-									display: false,
+									display: true,
+									color: "rgba(0,0,0,0.3)",
 								},
 							},
 						],
@@ -53,7 +57,10 @@ const Chart = () => {
 					labels: dailyData.map((data) => {
 						let date = data.reportDate;
 						let dconv = new Date(date);
-						return dconv.toLocaleString("en", { month: "short" });
+						return dconv.toLocaleString("en", {
+							month: "short",
+							// year: true,
+						});
 					}),
 					datasets: [
 						{
