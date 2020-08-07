@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
-import { red } from "@material-ui/core/colors";
 import styles from "./Chart.module.css";
 
 const Chart = () => {
@@ -17,9 +16,44 @@ const Chart = () => {
 	const lineChart =
 		dailyData[0] != null ? (
 			<Line
+				options={{
+					responsive: true,
+					legend: {
+						display: true,
+					},
+					scales: {
+						xAxes: [
+							{
+								gridLines: {
+									display: false,
+								},
+								ticks: {
+									autoSkip: true,
+									maxTicksLimit: 12,
+								},
+							},
+						],
+						yAxes: [
+							{
+								scaleLabel: {
+									display: true,
+									labelString: "Cases",
+								},
+								ticks: {
+									stepSize: 4000000,
+								},
+								gridLines: {
+									display: false,
+								},
+							},
+						],
+					},
+				}}
 				data={{
 					labels: dailyData.map((data) => {
-						return data.reportDate;
+						let date = data.reportDate;
+						let dconv = new Date(date);
+						return dconv.toLocaleString("en", { month: "short" });
 					}),
 					datasets: [
 						{
@@ -27,18 +61,23 @@ const Chart = () => {
 								return data.totalConfirmed;
 							}),
 							label: "Infected",
-							borderColor: "blue",
-							backgroundColor: "rgba(0,0,255,0.2)",
-							fill: true,
+							borderColor: "rgba(0,0,255,0.6)",
+							backgroundColor: "rgba(0,0,255,0.1)",
+							pointBorderColor: "rgba(0,0,0,0)",
+							pointBackgroundColor: "rgba(0,0,0,0)",
+							pointRadius: 20,
+							borderWidth: 3,
 						},
 						{
 							data: dailyData.map((data) => {
 								return data.deaths.total;
 							}),
-							label: "Sacrificed",
-							borderColor: "red",
+							label: "Deaths",
+							borderColor: "rgba(255,0,0,0.6)",
 							backgroundColor: "rgba(255,0,0,0.2)",
-							fill: true,
+							pointBorderColor: "rgba(0,0,0,0)",
+							pointBackgroundColor: "rgba(0,0,0,0)",
+							pointRadius: 20,
 						},
 					],
 				}}
