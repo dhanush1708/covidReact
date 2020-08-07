@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/covidReact/static/css/main.ee145012.chunk.css",
+    "main.css": "/covidReact/static/css/main.bdd19e59.chunk.css",
     "main.js": "/covidReact/static/js/main.8646fe31.chunk.js",
     "main.js.map": "/covidReact/static/js/main.8646fe31.chunk.js.map",
     "runtime-main.js": "/covidReact/static/js/runtime-main.ef05b4a0.js",
@@ -8,15 +8,15 @@
     "static/js/2.385b5264.chunk.js": "/covidReact/static/js/2.385b5264.chunk.js",
     "static/js/2.385b5264.chunk.js.map": "/covidReact/static/js/2.385b5264.chunk.js.map",
     "index.html": "/covidReact/index.html",
-    "precache-manifest.520ce6474a07fde7d5f8ee6a12d2e45c.js": "/covidReact/precache-manifest.520ce6474a07fde7d5f8ee6a12d2e45c.js",
+    "precache-manifest.8ebdecec63251975a6d836311baa26c2.js": "/covidReact/precache-manifest.8ebdecec63251975a6d836311baa26c2.js",
     "service-worker.js": "/covidReact/service-worker.js",
-    "static/css/main.ee145012.chunk.css.map": "/covidReact/static/css/main.ee145012.chunk.css.map",
+    "static/css/main.bdd19e59.chunk.css.map": "/covidReact/static/css/main.bdd19e59.chunk.css.map",
     "static/js/2.385b5264.chunk.js.LICENSE.txt": "/covidReact/static/js/2.385b5264.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ef05b4a0.js",
     "static/js/2.385b5264.chunk.js",
-    "static/css/main.ee145012.chunk.css",
+    "static/css/main.bdd19e59.chunk.css",
     "static/js/main.8646fe31.chunk.js"
   ]
 }
