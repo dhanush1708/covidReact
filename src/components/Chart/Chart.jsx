@@ -3,7 +3,7 @@ import { fetchDailyData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
 import styles from "./Chart.module.css";
 
-const Chart = () => {
+const Chart = (props) => {
 	const [dailyData, setDailyData] = useState({});
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ const Chart = () => {
 	}, []);
 
 	const lineChart =
-		dailyData[0] != null ? (
+		props.country == "Global" && dailyData[0] != null ? (
 			<Line
 				options={{
 					responsive: true,
@@ -41,7 +41,7 @@ const Chart = () => {
 								ticks: {
 									beginAtZero: false,
 									callback: function (value) {
-										if (value == 0) return "0";
+										if (value === 0) return "0";
 										return value / 100000 + " Lakhs";
 									},
 								},
@@ -91,7 +91,56 @@ const Chart = () => {
 			/>
 		) : null;
 
-	return <div className={styles.container}>{lineChart}</div>;
+	const barChart =
+		props.country != "Global" && props.data.confirmed != null ? (
+			<Bar
+				options={{
+					legend: {
+						display: false,
+					},
+					title: {
+						display: true,
+						text: `Chart for ${props.country}`,
+					},
+					scales: {
+						xAxes: [
+							{
+								gridLines: false,
+							},
+						],
+						yAxes: [
+							{
+								gridLines: false,
+							},
+						],
+					},
+				}}
+				data={{
+					labels: ["Infected", "Recovered", "Deaths"],
+					datasets: [
+						{
+							data: [
+								props.data.confirmed.value,
+								props.data.recovered.value,
+								props.data.deaths.value,
+							],
+							backgroundColor: [
+								"rgba(0, 0, 255, 0.6)",
+								"rgba(0, 255, 0, 0.6)",
+								"rgba(255, 0, 0, 0.6)",
+							],
+						},
+					],
+				}}
+			/>
+		) : null;
+
+	return (
+		<div className={styles.container}>
+			{lineChart}
+			{barChart}
+		</div>
+	);
 };
 
 export default Chart;
