@@ -2,6 +2,7 @@ import React from "react";
 import { Chart, Cards, CountryPicker } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
+//try with this API : https://api.covid19api.com/country/india (later)
 
 class App extends React.Component {
 	constructor(props) {
@@ -19,7 +20,6 @@ class App extends React.Component {
 
 	handleSelectChange = async (country) => {
 		const fetchedData = await fetchData(country);
-		console.log(fetchedData);
 		this.setState({ data: fetchedData, country: country });
 	};
 
