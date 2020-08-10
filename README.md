@@ -3,6 +3,7 @@
 A webapp written in Reactjs.
 
 You can view the webapp at https://dhanush1708.github.io/covidReact/
+
 API used is https://covid19.mathdro.id/api/
 
 ## Libraries used:
